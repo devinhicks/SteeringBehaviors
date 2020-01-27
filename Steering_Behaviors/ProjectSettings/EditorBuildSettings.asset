@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Steering.unity
+  - enabled: 0
+    path: Assets/Scenes/SteeringBasics.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/FancyArrival.unity
+    guid: 5d87629d5eeed433d8f5b0db718d8d5a
   m_configObjects: {}
