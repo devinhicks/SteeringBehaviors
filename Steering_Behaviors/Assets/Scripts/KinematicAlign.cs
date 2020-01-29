@@ -10,6 +10,9 @@ public class KinematicAlign : MonoBehaviour
     public float angularVelocity; // degrees please
     public GameObject target;
 
+    public bool face = false;
+    public bool lwyg = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -26,8 +29,17 @@ public class KinematicAlign : MonoBehaviour
             this.transform.eulerAngles += v * Time.deltaTime;
         }
 
-        // update linear and angular velocity
         Align myAlign = new Align();
+
+        if (face)
+        {
+            myAlign = new Face();
+        }
+        else if (lwyg)
+        {
+            myAlign = new LookWhereYoureGoing();
+        }
+
         myAlign.character = this;
         myAlign.target = target;
         SteeringOutput steering = myAlign.getSteering();

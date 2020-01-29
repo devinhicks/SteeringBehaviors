@@ -71,3 +71,29 @@ public class Align
         return result;
     }
 }
+
+public class Face : Align
+{
+    public override float getTargetAngle()
+    {
+        Vector3 direction = target.transform.position - character.transform.position;
+
+        float targetAngle = Mathf.Atan2(direction.x, direction.z);
+        return targetAngle * Mathf.Rad2Deg;
+    }
+}
+
+public class LookWhereYoureGoing : Align
+{
+    public override float getTargetAngle()
+    {
+        Vector3 velocity = character.linearVelocity;
+        if (velocity.magnitude == 0)
+        {
+            return character.transform.eulerAngles.y;
+        }
+
+        float targetAngle = Mathf.Atan2(velocity.x, velocity.z);
+        return targetAngle * Mathf.Rad2Deg;
+    }
+}
