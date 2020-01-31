@@ -19,4 +19,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+
+    public void fancyAFL()
+    {
+        SceneManager.LoadScene(4);
+    }
 }

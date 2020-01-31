@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AligningBehaviors.unity
     guid: 27af6b6a1d77b49fc80305571be07036
+  - enabled: 1
+    path: Assets/Scenes/FancyAlign.unity
+    guid: d8c4169427696417b826403ffd534faf
   m_configObjects: {}

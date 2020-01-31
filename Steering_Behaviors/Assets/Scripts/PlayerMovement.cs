@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public GameManager gm;
 
     // We marked this as "Fixed"Update because we
-    // are using it to mess with physics
+
     void FixedUpdate()
     {
         if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))     // If the player is perssing the "d" key
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(0, 0, -moveForce * Time.deltaTime, ForceMode.VelocityChange);
         }
 
-        if (transform.position.y < 1)
+        if (transform.position.y < 0)
         {
             gm.EndGame();
         }

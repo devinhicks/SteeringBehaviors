@@ -20,7 +20,7 @@ public class EndTrigger : MonoBehaviour
     {
         if (dropCount >= 25)
         {
-            gm.ComepleteLevel();
+            gm.CompleteLevel();
         }
     }
 }

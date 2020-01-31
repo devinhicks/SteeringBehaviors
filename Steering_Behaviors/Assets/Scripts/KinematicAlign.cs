@@ -23,6 +23,7 @@ public class KinematicAlign : MonoBehaviour
 
         // update position and rotation
         transform.position += linearVelocity * Time.deltaTime;
+
         if (Mathf.Abs(angularVelocity) > 0.01f)
         {
             Vector3 v = new Vector3(0, angularVelocity, 0);

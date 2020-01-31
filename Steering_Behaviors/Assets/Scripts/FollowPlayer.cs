@@ -16,6 +16,6 @@ public class FollowPlayer : MonoBehaviour
             // SceneManager.LoadScene("Menu");
         }
 
-        Invoke("InstructionsUI.SetActive(false)", 10f);
+        //Invoke("InstructionsUI.SetActive(false)", 10f);
     }
 }

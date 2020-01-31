@@ -18,11 +18,12 @@ public class GameManager : MonoBehaviour
 
     public int collected;
 
-    public void ComepleteLevel()
+    public void CompleteLevel()
     {
         completeLevelUI.SetActive(true);
         laser.SetActive(false);
         player.SetActive(false);
+        Invoke("Application.Quit()", 1f);
     }
 
     public void EndGame()
@@ -39,10 +40,5 @@ public class GameManager : MonoBehaviour
     {
         // if player does not end game, restart the current scene/level
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void Update()
-    {
-        Invoke("InstructionsUI.SetActive(false)", 10f);
     }
 }
