@@ -8,48 +8,48 @@ public class Kinematic : MonoBehaviour
     // rotation as well
     public Vector3 linearVelocity;
     public float angularVelocity; // degrees please
-    public GameObject target;
-    public float maxSpeed;
 
-    public bool seeking = true; // toggle seek or flee
+    public GameObject target;
+
+    public float maxSpeed = 10.0f;
+    public float maxAngularVel = 45.0f;
+
+    protected SteeringOutput steeringUpdate;
+
+    protected virtual void Start()
+    {
+        steeringUpdate = new SteeringOutput();
+    }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
+        if (float.IsNaN(angularVelocity))
+        {
+            angularVelocity = 0.0f;
+        }
+
         // update position and rotation
-        transform.position += linearVelocity * Time.deltaTime;
+        this.transform.position += linearVelocity * Time.deltaTime;
         Vector3 angularIncrement = new Vector3(0, angularVelocity * Time.deltaTime, 0);
         transform.eulerAngles += angularIncrement;
 
-        // update linear and angular velocity
-        // check mode of character to know whether to seek or flee
-        // if/else determines what direction steering vector will be pointing
-        SteeringOutput steering;
-
-        if (seeking == true)
-        {
-            Seek mySeek = new Seek();
-            mySeek.character = this;
-            mySeek.target = target;
-            steering = mySeek.getSteering();
-        }
-        else
-        {
-            Flee myFlee = new Flee();
-            myFlee.character = this;
-            myFlee.target = target;
-            steering = myFlee.getSteering();
-        }
-
         // steering vector is then added to the character's current vector
-        linearVelocity += steering.linear * Time.deltaTime;
-        angularVelocity += steering.angular * Time.deltaTime;
-
+        if (steeringUpdate != null)
+        {
+            linearVelocity += steeringUpdate.linear * Time.deltaTime;
+            angularVelocity += steeringUpdate.angular * Time.deltaTime;
+        }
 
         if (linearVelocity.magnitude > maxSpeed)
         {
             linearVelocity.Normalize();
             linearVelocity *= maxSpeed;
+        }
+
+        if (Mathf.Abs(angularVelocity) > maxAngularVel)
+        {
+            angularVelocity = maxAngularVel * (angularVelocity / angularVelocity);
         }
     }
 }

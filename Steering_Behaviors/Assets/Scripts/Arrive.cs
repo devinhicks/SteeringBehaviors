@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class Arrive
 {
-    public KinematicArrive character;
+    public Kinematic character;
     public GameObject target;
 
-    float maxAcceleration = 100f;
-    float maxSpeed = 10f;
+    float maxAcceleration = 10f;
+    float maxSpeed = 2f;
 
-    float targetRadius = 1.5f; // the radius for arriving at the target                            
-    float slowRadius = 3f; // the radius for beginning to slow down                 
+    float targetRadius = 0.5f; // the radius for arriving at the target                            
+    float slowRadius = 1.5f; // the radius for beginning to slow down                 
     float timeToTarget = 0.1f; // the time over which to achieve target speed
 
-    public SteeringOutput getSteering()
+    protected virtual Vector3 getTargetPosition()
+    {
+        return target.transform.position;
+    }
+
+    public virtual SteeringOutput getSteering()
     {
         SteeringOutput result = new SteeringOutput();
 
@@ -22,7 +27,7 @@ public class Arrive
         float distance, targetSpeed;
 
         // get the direction to the target
-        direction = target.transform.position - character.transform.position;
+        direction = getTargetPosition() - character.transform.position;
         distance = direction.magnitude;
 
         // if (distance < targetRadius)
@@ -57,5 +62,40 @@ public class Arrive
 
         result.angular = 0;
         return result;
+    }
+}
+
+public class Pursue : Arrive
+{
+    // will override target in Seek
+    float maxPrediction = 1f;
+
+    protected override Vector3 getTargetPosition()
+    {
+        // distance to target
+        Vector3 direction = target.transform.position - character.transform.position;
+        float distance = direction.magnitude;
+
+        // get speed of character
+        float speed = character.linearVelocity.magnitude;
+
+        // check if speed gives reasonable prediction time
+        float prediction;
+        if (speed <= distance / maxPrediction)
+        {
+            prediction = maxPrediction;
+        }
+        else
+        {
+            prediction = distance / speed;
+        }
+
+        Kinematic movingTarget = target.GetComponent<Kinematic>();
+        if (movingTarget == null)
+        {
+            return base.getTargetPosition();
+        }
+
+        return target.transform.position + movingTarget.linearVelocity * prediction;
     }
 }

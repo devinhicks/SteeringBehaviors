@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Align
 {
-    public KinematicAlign character;
+    public Kinematic character;
     public GameObject target;
 
     float maxAngularAcceleration = 100f;

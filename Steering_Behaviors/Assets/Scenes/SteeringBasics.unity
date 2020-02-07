@@ -228,14 +228,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 304730042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50bf5816379d8485eb0393ab108bafc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f0b874601bbe4e32bbd0fe0a951b47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   linearVelocity: {x: 0, y: 0, z: 0}
   angularVelocity: 0
   target: {fileID: 1037526925}
-  maxSpeed: 3
+  maxSpeed: 5
+  maxAngularVel: 45
   seeking: 0
+  fleeing: 1
+  evading: 0
+  facing: 0
 --- !u!135 &304730044
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -339,14 +343,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 421008900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50bf5816379d8485eb0393ab108bafc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f0b874601bbe4e32bbd0fe0a951b47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   linearVelocity: {x: 0, y: 0, z: 0}
   angularVelocity: 0
   target: {fileID: 1698251443}
   maxSpeed: 10
+  maxAngularVel: 45
   seeking: 1
+  fleeing: 0
+  evading: 0
+  facing: 1
 --- !u!135 &421008902
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -541,12 +549,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 711547939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4a44b8008c7041d0aeef218f84e17ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 14f3c6bc7a06f448ca0e0c68e9fa1e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   linearVelocity: {x: 0, y: 0, z: 0}
   angularVelocity: 0
   target: {fileID: 1427010160}
+  maxSpeed: 10
+  maxAngularVel: 45
 --- !u!135 &711547941
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -746,14 +756,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1037526925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50bf5816379d8485eb0393ab108bafc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f0b874601bbe4e32bbd0fe0a951b47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   linearVelocity: {x: 0, y: 0, z: 0}
   angularVelocity: 0
   target: {fileID: 304730042}
-  maxSpeed: 3
+  maxSpeed: 5
+  maxAngularVel: 45
   seeking: 1
+  fleeing: 0
+  evading: 0
+  facing: 0
 --- !u!65 &1037526927
 BoxCollider:
   m_ObjectHideFlags: 0
