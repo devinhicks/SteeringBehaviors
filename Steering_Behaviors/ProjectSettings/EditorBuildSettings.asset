@@ -9,19 +9,19 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: d0f9e516456d94df8b1f01ec1eb97444
   - enabled: 1
-    path: Assets/Scenes/SteeringBasics.unity
+    path: Assets/Scenes/SFA.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/FancyArrival.unity
+    path: Assets/Scenes/FancySFA.unity
     guid: 5d87629d5eeed433d8f5b0db718d8d5a
   - enabled: 1
-    path: Assets/Scenes/AligningBehaviors.unity
+    path: Assets/Scenes/AFL.unity
     guid: 27af6b6a1d77b49fc80305571be07036
   - enabled: 1
     path: Assets/Scenes/FancyAlign.unity
     guid: d8c4169427696417b826403ffd534faf
   - enabled: 1
-    path: Assets/Scenes/Following.unity
+    path: Assets/Scenes/PPS.unity
     guid: f45ff95100b454589840ba3261c14d3c
   - enabled: 1
     path: Assets/Scenes/FancyPPS.unity
