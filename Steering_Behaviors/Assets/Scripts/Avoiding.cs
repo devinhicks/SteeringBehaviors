@@ -4,25 +4,44 @@ using UnityEngine;
 
 public class Avoiding : Kinematic
 {
-    CollisionAvoidance moveType;
-    LookWhereYoureGoing rotateType;
+    public bool obstacle = false;
 
-    public Kinematic[] avoidingTargets;
+    CollisionAvoidance avoidTypeCol;
+    ObstacleAvoidance avoidTypeObs;
+    //LookWhereYoureGoing rotateType;
+
+    public Kinematic[] avoidingTargets = new Kinematic[2];
+    public GameObject obstacleTarget;
 
     // Start is called before the first frame update
     protected override void Start()
     {
-        moveType = new CollisionAvoidance();
-        moveType.character = this;
-        moveType.targets = avoidingTargets;
+        if (obstacle)
+        {
+            avoidTypeObs = new ObstacleAvoidance();
+            avoidTypeObs.character = this;
+            avoidTypeObs.target = obstacleTarget;
+        }
+        else
+        {
+            avoidTypeCol = new CollisionAvoidance();
+            avoidTypeCol.character = this;
+            avoidTypeCol.targets = avoidingTargets;
+        } 
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        steeringUpdate = new SteeringOutput();
-        steeringUpdate.linear = moveType.getSteering().linear;
-        steeringUpdate.angular = moveType.getSteering().angular;
+        if (obstacle)
+        {
+            steeringUpdate = avoidTypeObs.getSteering();
+        }
+        else
+        {
+            steeringUpdate = avoidTypeCol.getSteering();
+        }
+  
         base.Update();
     }
 }

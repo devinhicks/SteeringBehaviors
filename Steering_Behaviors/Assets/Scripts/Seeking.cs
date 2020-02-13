@@ -8,7 +8,8 @@ public class Seeking : Kinematic
     Seek moveTypeSeek;
     Flee moveTypeFlee;
     Evade moveTypeEvade;
-    Pursue moveTypePursue;
+    ObstacleAvoidance moveTypeAvoid;
+    //Pursue moveTypePursue;
 
     //Rotate Type Face/LWYG
     Face rotateTypeFace;
@@ -17,6 +18,7 @@ public class Seeking : Kinematic
     public bool seeking = true;
     public bool fleeing = false;
     public bool evading = false;
+    public bool obstacleAvoidance = false;
     //if both are false, character is pursuing
 
     public bool facing = false;
@@ -36,6 +38,10 @@ public class Seeking : Kinematic
         moveTypeEvade.character = this;
         moveTypeEvade.target = target;
 
+        moveTypeAvoid = new ObstacleAvoidance();
+        moveTypeAvoid.character = this;
+        moveTypeAvoid.target = target;
+
         rotateTypeFace = new Face();
         rotateTypeFace.character = this;
         rotateTypeFace.target = target;
@@ -43,6 +49,8 @@ public class Seeking : Kinematic
         rotateTypeLWYG = new LookWhereYoureGoing();
         rotateTypeLWYG.character = this;
         rotateTypeLWYG.target = target;
+
+
     }
 
     // Update is called once per frame
@@ -57,9 +65,13 @@ public class Seeking : Kinematic
         {
             steeringUpdate.linear = moveTypeFlee.getSteering().linear;
         }
-        else
+        else if (evading)
         {
             steeringUpdate.linear = moveTypeEvade.getSteering().linear;
+        }
+        else
+        {
+            steeringUpdate.linear = moveTypeAvoid.getSteering().linear;
         }
 
         steeringUpdate.angular = facing ?

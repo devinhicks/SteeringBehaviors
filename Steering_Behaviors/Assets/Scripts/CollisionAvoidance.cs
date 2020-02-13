@@ -19,24 +19,23 @@ public class CollisionAvoidance
         float shortestTime = float.PositiveInfinity;
 
         // store our data
-        Vector3 relativePos;
+        Vector3 relativePos = Vector3.positiveInfinity;
 
         // store that target and it's data
         Kinematic firstTarget = null;
-        float firstMinSeparation;
-        float firstDistance;
-        Vector3 firstRelativePos;
-        Vector3 firstRelativeVel;
+        float firstMinSeparation= float.PositiveInfinity;
+        float firstDistance = float.PositiveInfinity;
+        Vector3 firstRelativePos = Vector3.positiveInfinity;
+        Vector3 firstRelativeVel = Vector3.zero;
 
         // loop through targets
         foreach (Kinematic target in targets)
         {
             // get time until collision
-            Debug.Log("for looping");
             relativePos = target.transform.position - character.transform.position;
             Vector3 relativeVel = character.linearVelocity - target.linearVelocity;
             float relativeSpeed = relativeVel.magnitude;
-            float timeToCollision = Vector3.Dot(relativePos, relativeVel) /
+            float timeToCollision = (Vector3.Dot(relativePos, relativeVel)) /
                 (relativeSpeed * relativeSpeed);
 
             // check if we'll actually collide

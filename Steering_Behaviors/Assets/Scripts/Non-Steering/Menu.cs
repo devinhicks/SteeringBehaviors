@@ -34,4 +34,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(6);
     }
+
+    public void CAOA()
+    {
+        SceneManager.LoadScene(7);
+    }
 }
