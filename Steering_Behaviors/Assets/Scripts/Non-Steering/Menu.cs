@@ -39,4 +39,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(7);
     }
+
+    public void FancyCaOA()
+    {
+        SceneManager.LoadScene(8);
+    }
 }

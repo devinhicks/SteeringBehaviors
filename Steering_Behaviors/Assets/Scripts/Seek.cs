@@ -7,7 +7,7 @@ public class Seek
     public Kinematic character;
     public GameObject target;
 
-    float maxAcceleration = 1f;
+    public float maxAcceleration = 10f;
 
     protected virtual Vector3 getTargetPosition()
     {

@@ -8,7 +8,7 @@ public class CollisionAvoidance
     public Kinematic[] targets;
 
     public float maxAcceleration = 3f;
-    public float radius = 1f;
+    public float radius = 0.5f;
 
     public SteeringOutput getSteering()
     {
