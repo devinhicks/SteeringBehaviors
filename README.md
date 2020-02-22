@@ -1,2 +1,2 @@
 # SteeringBehaviors
- Basic dynamic steering
+https://devinhicks.github.io/SteeringBehaviors/
