@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Seek
+public class Seek : SteeringBehavior
 {
     public Kinematic character;
     public GameObject target;
 
-    public float maxAcceleration = 10f;
+    public float maxAcceleration = 20f;
 
     protected virtual Vector3 getTargetPosition()
     {
         return target.transform.position;
     }
 
-    public virtual SteeringOutput getSteering()
+    public override SteeringOutput getSteering()
     {
         SteeringOutput result = new SteeringOutput();
 
@@ -96,41 +96,5 @@ public class Evade : Flee
         }
 
         return target.transform.position + movingTarget.linearVelocity * prediction;
-    }
-}
-
-public class Separation : Seek
-{
-    //public Kinematic character;
-    float maxAcceleration = 6f;
-
-    public GameObject[] targets; // list of potential targets
-    float threshold = 15f; // the threshold to take action
-    float decayCoefficient = 1f;
-
-    public override SteeringOutput getSteering()
-    {
-        SteeringOutput result = new SteeringOutput();
-
-        // loop through each target
-        foreach(GameObject target in targets)
-        {
-            // check if target is close
-            Vector3 direction = target.transform.position - character.transform.position;
-            float distance = direction.magnitude;
-
-            if (distance < threshold)
-            {
-                // calculate strength of repulsion here (using inverse square law)
-                float strength = Mathf.Min(decayCoefficient /
-                    (distance * distance), maxAcceleration);
-
-                // add accelaeration
-                direction.Normalize();
-                result.linear += strength * direction;
-            }
-        }
-
-        return result;
     }
 }

@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FancyCaOA.unity
     guid: 6e6e45ec50f17483697157b16278900d
+  - enabled: 1
+    path: Assets/Scenes/Blended.unity
+    guid: e81493d68a6c74f37910d42a02c3cf99
   m_configObjects: {}

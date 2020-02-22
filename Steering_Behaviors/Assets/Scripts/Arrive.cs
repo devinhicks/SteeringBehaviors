@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrive
+public class Arrive : SteeringBehavior
 {
     public Kinematic character;
     public GameObject target;
@@ -19,7 +19,7 @@ public class Arrive
         return target.transform.position;
     }
 
-    public virtual SteeringOutput getSteering()
+    public override SteeringOutput getSteering()
     {
         SteeringOutput result = new SteeringOutput();
 

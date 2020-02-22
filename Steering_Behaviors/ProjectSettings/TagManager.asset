@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Laser
   - Chaser
+  - boid
   layers:
   - Default
   - TransparentFX

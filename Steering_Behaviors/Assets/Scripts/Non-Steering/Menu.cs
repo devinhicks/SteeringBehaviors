@@ -44,4 +44,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(8);
     }
+
+    public void BlendedSteering()
+    {
+        SceneManager.LoadScene(9);
+    }
 }
