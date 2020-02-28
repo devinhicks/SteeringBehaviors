@@ -641,6 +641,7 @@ MonoBehaviour:
   seeking: 0
   fleeing: 1
   evading: 0
+  obstacleAvoidance: 0
   facing: 0
 --- !u!136 &445328838
 CapsuleCollider:
@@ -1742,6 +1743,7 @@ MonoBehaviour:
   seeking: 0
   fleeing: 1
   evading: 0
+  obstacleAvoidance: 0
   facing: 0
 --- !u!136 &1042298309
 CapsuleCollider:
@@ -2236,6 +2238,7 @@ MonoBehaviour:
   seeking: 1
   fleeing: 0
   evading: 0
+  obstacleAvoidance: 0
   facing: 0
 --- !u!65 &1146420117
 BoxCollider:

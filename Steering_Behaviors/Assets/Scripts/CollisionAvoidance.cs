@@ -8,6 +8,7 @@ public class CollisionAvoidance
     public Kinematic[] targets;
 
     public float maxAcceleration = 3f;
+    public float maxSpeed = 15f;
     public float radius = 0.5f;
 
     public SteeringOutput getSteering()
@@ -64,14 +65,14 @@ public class CollisionAvoidance
         // if no target, exit
         if (firstTarget == null)
         {
-            Debug.Log("SAFE!");
+            //Debug.Log("SAFE!");
             return null;
         }
 
         /// if we're going to hit exactly, or if we're already colliding
         /// do the steering based on current Pos
 
-        Debug.Log("DANGER - gonna hit " + firstTarget);
+        //Debug.Log("DANGER - gonna hit " + firstTarget);
         //return null;
 
         SteeringOutput result = new SteeringOutput();
@@ -86,8 +87,18 @@ public class CollisionAvoidance
         {
             result.linear = -firstTarget.linearVelocity;
         }
+
+        // cap to max acceleration
         result.linear.Normalize();
         result.linear *= maxAcceleration;
+
+        // cap to maxSpeed
+        if (result.linear.magnitude > maxSpeed)
+        {
+            result.linear.Normalize();
+            result.linear *= maxSpeed;
+        }
+
         result.angular = 0;
         return result;
     }

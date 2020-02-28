@@ -45,7 +45,7 @@ public class Separation : SteeringBehavior
     {
         SteeringOutput result = new SteeringOutput();
 
-        // loop through each target
+        // loop throh each target
         foreach (Kinematic target in targets)
         {
             // check if target is close

@@ -49,4 +49,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(9);
     }
+
+    public void PrioritySteering()
+    {
+        SceneManager.LoadScene(10);
+    }
 }

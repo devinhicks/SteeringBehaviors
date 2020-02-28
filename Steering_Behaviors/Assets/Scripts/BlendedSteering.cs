@@ -42,6 +42,7 @@ public class BlendedSteering : MonoBehaviour
         result.linear = result.linear.normalized
             * Mathf.Min(maxAcceleration,result.linear.magnitude);
         result.angular = Mathf.Abs(result.angular) / result.angular * maxRotation;
-        return result;
+
+        return result; 
     }
 }

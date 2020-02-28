@@ -7,7 +7,9 @@ public class Seek : SteeringBehavior
     public Kinematic character;
     public GameObject target;
 
-    public float maxAcceleration = 20f;
+    public float maxAcceleration = 2f;
+
+    public bool flee = false;
 
     protected virtual Vector3 getTargetPosition()
     {
@@ -22,7 +24,14 @@ public class Seek : SteeringBehavior
         //result.angular = 5f;
 
         // get direction to the target
-        result.linear = getTargetPosition() - character.transform.position;
+        if (flee)
+        {
+            result.linear = character.transform.position - getTargetPosition();
+        }
+        else
+        {
+            result.linear = getTargetPosition() - character.transform.position;
+        }
 
         // give full acceleration
         result.linear.Normalize();
@@ -33,43 +42,43 @@ public class Seek : SteeringBehavior
     }
 }
 
-public class Flee
-{
-    public Kinematic character;
-    public GameObject target;
+//public class Flee
+//{
+//    public Kinematic character;
+//    public GameObject target;
 
-    float maxAcceleration = 5f;
+//    float maxAcceleration = 5f;
 
-    public virtual Vector3 getTargetPosition()
-    {
-        return target.transform.position;
-    }
+//    public virtual Vector3 getTargetPosition()
+//    {
+//        return target.transform.position;
+//    }
 
-    public SteeringOutput getSteering()
-    {
-        SteeringOutput result = new SteeringOutput();
+//    public SteeringOutput getSteering()
+//    {
+//        SteeringOutput result = new SteeringOutput();
 
-        //result.linear = new Vector3(0, 0, 1);
-        //result.angular = 5f;
+//        //result.linear = new Vector3(0, 0, 1);
+//        //result.angular = 5f;
 
-        // get direction to the target
-        result.linear = character.transform.position - getTargetPosition();
+//        // get direction to the target
+//        result.linear = character.transform.position - getTargetPosition();
 
-        // give full acceleration
-        result.linear.Normalize();
-        result.linear *= maxAcceleration;
+//        // give full acceleration
+//        result.linear.Normalize();
+//        result.linear *= maxAcceleration;
 
-        result.angular = 0;
-        return result;
-    }
-}
+//        result.angular = 0;
+//        return result;
+//    }
+//}
 
-public class Evade : Flee
+public class Evade : Seek
 {
     // will override target in Seek
     float maxPrediction = 1f;
 
-    public override Vector3 getTargetPosition()
+    protected override Vector3 getTargetPosition()
     {
         // distance to target
         Vector3 direction = target.transform.position - character.transform.position;
@@ -95,6 +104,7 @@ public class Evade : Flee
             return base.getTargetPosition();
         }
 
+        base.flee = true;
         return target.transform.position + movingTarget.linearVelocity * prediction;
     }
 }

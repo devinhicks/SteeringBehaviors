@@ -11,7 +11,7 @@ public class Kinematic : MonoBehaviour
 
     public GameObject target;
 
-    public float maxSpeed = 10.0f;
+    public float maxSpeed = 3.0f;
     public float maxAngularVel = 45.0f;
 
     protected SteeringOutput steeringUpdate;

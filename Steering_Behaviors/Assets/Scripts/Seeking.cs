@@ -6,7 +6,7 @@ public class Seeking : Kinematic
 {
     // MoveType Seek/Flee/Pursue
     Seek moveTypeSeek;
-    Flee moveTypeFlee;
+    Seek moveTypeFlee;
     Evade moveTypeEvade;
     ObstacleAvoidance moveTypeAvoid;
     //Pursue moveTypePursue;
@@ -30,7 +30,8 @@ public class Seeking : Kinematic
         moveTypeSeek.character = this;
         moveTypeSeek.target = target;
         
-        moveTypeFlee = new Flee();
+        moveTypeFlee = new Seek();
+        moveTypeFlee.flee = true;
         moveTypeFlee.character = this;
         moveTypeFlee.target = target;
         

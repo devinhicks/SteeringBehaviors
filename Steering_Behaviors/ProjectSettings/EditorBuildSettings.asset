@@ -27,12 +27,18 @@ EditorBuildSettings:
     path: Assets/Scenes/FancyPPS.unity
     guid: 303ada4f7c80c45bcb0a5771d8d7ae43
   - enabled: 1
-    path: Assets/Scenes/CaOA.unity
+    path: Assets/Scenes/CAOA.unity
     guid: ed05929a2a8fa44cea0f50c99974d30b
   - enabled: 1
-    path: Assets/Scenes/FancyCaOA.unity
+    path: Assets/Scenes/FancyCAOA.unity
     guid: 6e6e45ec50f17483697157b16278900d
   - enabled: 1
     path: Assets/Scenes/Blended.unity
     guid: e81493d68a6c74f37910d42a02c3cf99
+  - enabled: 1
+    path: Assets/Scenes/FancyBlend2.unity
+    guid: 4e1b67b7dae3b49328241710c0475fb8
+  - enabled: 1
+    path: Assets/Scenes/FancyBlending.unity
+    guid: c4fa6ded8c39945d3b9d8fc7dcb102d2
   m_configObjects: {}
