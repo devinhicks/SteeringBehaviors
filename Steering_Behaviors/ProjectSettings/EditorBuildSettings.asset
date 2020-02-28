@@ -36,9 +36,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Blended.unity
     guid: e81493d68a6c74f37910d42a02c3cf99
   - enabled: 1
-    path: Assets/Scenes/FancyBlend2.unity
-    guid: 4e1b67b7dae3b49328241710c0475fb8
-  - enabled: 1
     path: Assets/Scenes/FancyBlending.unity
     guid: c4fa6ded8c39945d3b9d8fc7dcb102d2
+  - enabled: 1
+    path: Assets/Scenes/FancyBlend2.unity
+    guid: 4e1b67b7dae3b49328241710c0475fb8
   m_configObjects: {}
