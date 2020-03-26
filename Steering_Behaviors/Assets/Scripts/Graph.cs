@@ -6,6 +6,8 @@ public class Graph
 {
     List<Connection> m_Connections;
 
+    private static bool isButterfly;
+
     // an array of connections outgoing from the given node.
     public List<Connection> getConnections(Node fromNode)
     {
@@ -20,18 +22,39 @@ public class Graph
         return connections;
     }
 
+    // TACTICAL PATHFINDING //
+    // we will use booleans on our pathfinding characters to determine
+    // what their cost will be
+    // BEES will not be particular about flowers, and so they travel by shortest
+    // distance, but BUTTERFLIES are very particular about their flowers, so
+    // they will only fly to flowers of a particular color
+
     public void Build()
     {
         // find nodes, iterate over nodes, create connections, put in m_Connections
         m_Connections = new List<Connection>();
+
+        isButterfly = PathFinder.isButterfly;
+
+        Debug.Log("Graph: " + isButterfly);
 
         Node[] nodes = GameObject.FindObjectsOfType<Node>();
         foreach (Node fromNode in nodes)
         {
             foreach (Node toNode in fromNode.ConnectsTo)
             {
+                Color nColor = toNode.gameObject.GetComponent<Renderer>().material.color;
+
                 float cost = (toNode.transform.position
                     - fromNode.transform.position).magnitude;
+
+                if (isButterfly == true) // if bool set to true on path finder
+                {
+                    if (nColor == Color.cyan) //if node's game object isn't yellow
+                    {
+                        cost *= 10; // make cost greater
+                    }
+                }
                 Connection c = new Connection(cost, fromNode, toNode);
                 m_Connections.Add(c);
             }

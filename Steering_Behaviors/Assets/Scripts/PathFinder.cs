@@ -13,9 +13,23 @@ public class PathFinder : Kinematic
 
     GameObject[] m_path;
 
+    // TACTICAL PATHFINDING
+    public static bool isButterfly; // if true, cost changes
+
     // Start is called before the first frame update
     void Start()
     {
+        if (this.gameObject.tag == "butterfly")
+        {
+            isButterfly = true;
+        }
+        else
+        {
+            isButterfly = false;
+        }
+
+        Debug.Log(this.name + ", " + isButterfly);
+
         rotateType = new LookWhereYoureGoing();
         rotateType.character = this;
         rotateType.target = target;

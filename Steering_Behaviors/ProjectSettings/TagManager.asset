@@ -8,6 +8,8 @@ TagManager:
   - Chaser
   - boid
   - wall
+  - butterfly
+  - bee
   layers:
   - Default
   - TransparentFX

@@ -59,4 +59,9 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(12);
     }
+
+    public void FancyDijkstra()
+    {
+        SceneManager.LoadScene(13);
+    }
 }
